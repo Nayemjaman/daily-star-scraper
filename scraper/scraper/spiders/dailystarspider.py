@@ -21,6 +21,3 @@ class DailystarspiderSpider(scrapy.Spider):
     #     yield {'headline':headline, 'images':images, 'date':date, 'news_detail':news_detail}
 
 
-
-# /sports/football/news/chelsea-battle-back-draw-2-2-liverpool-2931031
-# https://www.thedailystar.net/sports/football/news/chelsea-battle-back-draw-2-2-liverpool-2931031
