@@ -54,7 +54,6 @@ ROBOTSTXT_OBEY = True
 #    'scraper.middlewares.ScraperDownloaderMiddleware': 543,
 # }
 
-
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
     'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,

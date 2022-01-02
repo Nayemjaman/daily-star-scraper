@@ -4,7 +4,13 @@ import scrapy
 class DailystarspiderSpider(scrapy.Spider):
     name = 'dailystarspider'
     allowed_domains = ['https://www.thedailystar.net/']
-    start_urls = ['http://https://www.thedailystar.net//']
+    # start_urls = ['http://https://www.thedailystar.net//']
+    start_urls = ['https://www.thedailystar.net/health/disease/coronavirus/news/omicron-surge-schools-colleges-declared-closed-indias-west-bengal-2930741']
 
     def parse(self, response):
-        pass
+        headline = response.css('h1::text').get()
+        date = response.css('.text-10::text').get()
+        news_1 = response.css('p strong::text').extract()
+        news_2 = response.css('.section-content p::text').extract()
+        news_detail = news_1 + news_2
+        yield {'headline':headline,'date':date, 'news_detail':news_detail}
