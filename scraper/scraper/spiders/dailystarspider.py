@@ -10,8 +10,12 @@ class DailystarspiderSpider(scrapy.Spider):
     def parse(self, response):
         news_categories = []
         categories = response.css('li.expanded  a::attr(href)').extract()
-
-        yield {'categories':categories}
+        for x in categories:
+            a =x.split("/")
+            if len(a)==2:
+                news_categories.append(''.join(a[1:]))
+        # yield from response.follow_all(news_categories, self.news_details)
+        yield {'news_categories':news_categories}
 
     # def parse(self, response):
     #     news_links = response.css('td a::attr(href)').extract()
