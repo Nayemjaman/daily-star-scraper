@@ -15,10 +15,19 @@ class DailystarspiderSpider(scrapy.Spider):
             if len(a)==2:
                 news_categories.append(''.join(a[1:]))
         news_categories = news_categories[:10]
-        # yield from response.follow_all(news_categories, self.news_details)
-        yield {'news_categories':news_categories}
+        news_categories = ['https://www.thedailystar.net/'+ x +'/' for x in news_categories]
+        yield from response.follow_all(news_categories, self.news_pages)
+        # yield {'news_categories':news_categories}
 
-    # def parse(self, response):
+
+
+    def news_pages(self, response): #categories news links 
+        news_links = response.css('h3.title a::attr(href)').extract()
+        yield {'news_links':news_links}
+
+
+
+    # def parse(self, response): #To days news links 
     #     news_links = response.css('td a::attr(href)').extract()
     #     news_links = ['https://www.thedailystar.net'+x for x in news_links]
     #     yield from response.follow_all(news_links, self.news_details)
