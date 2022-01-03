@@ -37,6 +37,11 @@ class DailystarspiderSpider(scrapy.Spider):
 
     def news_details(self, response):
         current_url = response.request.url
+        st = current_url.split('/')
+        categories = st[3:4]
+        sub_categories = st[4:5]
+
+
         headline = response.css('h1::text').extract()
         # headline =  ''.join(headline) or use get()
         date = response.css('.text-10::text').extract()
@@ -45,4 +50,4 @@ class DailystarspiderSpider(scrapy.Spider):
         news_1 = response.css('p strong::text').extract()
         news_2 = response.css('.section-content p::text').extract()
         news_detail = news_1 + news_2
-        yield {'current_url':current_url,'headline': headline, 'images': images, 'date': date, 'news_detail': news_detail}
+        yield {'current_url':current_url,'categories':categories,'sub_categories':sub_categories,'headline': headline, 'images': images, 'date': date, 'news_detail': news_detail}
