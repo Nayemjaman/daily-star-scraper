@@ -14,6 +14,7 @@ class DailystarspiderSpider(scrapy.Spider):
             a =x.split("/")
             if len(a)==2:
                 news_categories.append(''.join(a[1:]))
+        news_categories = news_categories[:10]
         # yield from response.follow_all(news_categories, self.news_details)
         yield {'news_categories':news_categories}
 
