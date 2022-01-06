@@ -10,4 +10,8 @@ from itemadapter import ItemAdapter
 
 class ScraperPipeline:
     def process_item(self, item, spider):
+        item.save()
         return item
+        # if item not in item:
+            # item.save()
+
