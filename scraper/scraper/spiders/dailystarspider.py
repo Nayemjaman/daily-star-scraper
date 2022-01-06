@@ -1,5 +1,9 @@
 import scrapy
 
+from scraper.items import ScraperItem
+
+
+
 
 class DailystarspiderSpider(scrapy.Spider):
     name = 'dailystarspider'
@@ -36,18 +40,20 @@ class DailystarspiderSpider(scrapy.Spider):
     #     # yield {'news_links':news_links}
 
     def news_details(self, response):
+        item = ScraperItem()
+        item['current_url'] = response.request.url
         current_url = response.request.url
         st = current_url.split('/')
-        categories = st[3:4]
-        sub_categories = st[4:5]
+        item['categories'] = st[3:4]
+        item['sub_categories'] = st[4:5]
 
 
-        headline = response.css('h1::text').extract()
+        item['headline'] = response.css('h1::text').extract()
         # headline =  ''.join(headline) or use get()
-        date = response.css('.text-10::text').extract()
-        images = response.css(
+        item['date'] = response.css('.text-10::text').extract()
+        item['images'] = response.css(
             '.section-media img::attr(data-srcset)').extract()
         news_1 = response.css('p strong::text').extract()
         news_2 = response.css('.section-content p::text').extract()
-        news_detail = news_1 + news_2
-        yield {'current_url':current_url,'categories':categories,'sub_categories':sub_categories,'headline': headline, 'images': images, 'date': date, 'news_detail': news_detail}
+        item['news_detail'] = news_1 + news_2
+        yield item
