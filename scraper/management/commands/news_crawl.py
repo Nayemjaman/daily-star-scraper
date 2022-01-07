@@ -10,5 +10,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         process = CrawlerProcess(get_project_settings())
 
-        process.crawl(dailystarspider)
+        process.crawl(dailystarspider.DailystarspiderSpider)
         process.start()

@@ -4,10 +4,12 @@
 # https://docs.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from newsapp.models import News
 from scrapy_djangoitem import DjangoItem
-from newsapp.models import newsdetails
+
 
 class ScraperItem(DjangoItem):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    django_model = newsdetails
+    # name = scrapy.Fie
+    # ld()
+    django_model = News

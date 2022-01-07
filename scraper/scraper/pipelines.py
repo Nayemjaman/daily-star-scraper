@@ -7,9 +7,13 @@
 # useful for handling different item types with a single interface
 
 
+from scraper.scraper.items import ScraperItem
+
+
 class ScraperPipeline(object):
     def process_item(self, item, spider):
-        item.save()
+        # if isinstance(item, ScraperItem):
+        #     item.save()
         return item
         # if item not in item:
             # item.save()
