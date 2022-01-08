@@ -1,2 +1,2 @@
 # Daily-Star
-Web scraping, Django and Django rest
+Web scraping with Scrapy and integrate with Django
