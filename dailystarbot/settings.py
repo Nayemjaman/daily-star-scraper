@@ -1,4 +1,4 @@
-# Scrapy settings for scraper project
+# Scrapy settings for dailystarbot project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'scraper'
+BOT_NAME = 'dailystarbot'
 
-SPIDER_MODULES = ['scraper.spiders']
-NEWSPIDER_MODULE = 'scraper.spiders'
+SPIDER_MODULES = ['dailystarbot.spiders']
+NEWSPIDER_MODULE = 'dailystarbot.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'scraper (+http://www.yourdomain.com)'
+#USER_AGENT = 'dailystarbot (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,14 +45,14 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'scraper.middlewares.ScraperSpiderMiddleware': 543,
+#    'dailystarbot.middlewares.DailystarbotSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'scraper.middlewares.ScraperDownloaderMiddleware': 543,
-# }
+#DOWNLOADER_MIDDLEWARES = {
+#    'dailystarbot.middlewares.DailystarbotDownloaderMiddleware': 543,
+#}
 
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
@@ -69,7 +69,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'scraper.pipelines.ScraperPipeline': 300,
+   'dailystarbot.pipelines.DailystarbotPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -5,16 +5,9 @@
 
 
 # useful for handling different item types with a single interface
+from itemadapter import ItemAdapter
 
 
-from scraper.scraper.items import ScraperItem
-
-
-class ScraperPipeline(object):
+class DailystarbotPipeline:
     def process_item(self, item, spider):
-        # if isinstance(item, ScraperItem):
-        #     item.save()
         return item
-        # if item not in item:
-            # item.save()
-

@@ -1,10 +1,10 @@
 import scrapy
 
-from scraper.scraper.items import ScraperItem
+from dailystarbot.items import DailystarbotItem
 
 
-class DailystarspiderSpider(scrapy.Spider):
-    name = 'dailystarspider'
+class SpiderSpider(scrapy.Spider):
+    name = 'spider'
     allowed_domains = ['thedailystar.net']
     start_urls = ['https://www.thedailystar.net/todays-news']
 
@@ -34,8 +34,8 @@ class DailystarspiderSpider(scrapy.Spider):
     #     yield from response.follow_all(news_links, self.news_details)
 
     def news_details(self, response):
-        url = response.request.url
-        st = url.split('/')
+        news_url = response.request.url
+        st = news_url.split('/')
         category = st[3:4]
         category =  ''.join(category)
 
@@ -53,18 +53,19 @@ class DailystarspiderSpider(scrapy.Spider):
         
         news_1 = response.css('p strong::text').extract()
         news_2 = response.css('.section-content p::text').extract()
-        news_detail = news_1 + news_2
-        news_detail =  ''.join(news_detail)
+        news = news_1 + news_2
+        news =  ''.join(news)
 
 
-        item = ScraperItem()
-        item['url'] = url
+        item = DailystarbotItem()
+        item['news_url'] = news_url
         item['category'] = category
         # item['sub_categories'] = sub_categories
         item['headline'] = headline
         item['date'] = date
         item['images'] = images
-        item['news_detail'] = news_detail
-        if item['url'] is not None:
+        item['news'] = news
+        if item['news_url'] is not None:
             item.save()
         # yield item
+
