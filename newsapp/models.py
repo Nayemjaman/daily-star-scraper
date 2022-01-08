@@ -8,7 +8,7 @@ class News(models.Model):
     headline = models.CharField(max_length=500,blank=True,null=True)
     date = models.CharField(max_length=150,blank=True,null=True)
     images = models.CharField(max_length=500,blank=True,null=True)
-    news_detail = models.TextField(blank=True,null=True)
+    news = models.TextField(blank=True,null=True)
     
 
     def __str__(self):
